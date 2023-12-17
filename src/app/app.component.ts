@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
     button.click();
   }
 
-  public onAddEmloyee(addForm: NgForm): void {
+  public onAddEmployee(addForm: NgForm): void {
     // @ts-ignore
     document.getElementById('add-employee-form').click();
     this.employeeService.addEmployee(addForm.value).subscribe(
@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onUpdateEmloyee(employee: Employee): void {
+  public onUpdateEmployee(employee: Employee): void {
     this.employeeService.updateEmployee(employee).subscribe(
       (response: Employee) => {
         console.log(response);
@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onDeleteEmloyee(employeeId: number | undefined): void {
+  public onDeleteEmployee(employeeId: number | undefined): void {
     if (employeeId != null) {
       this.employeeService.deleteEmployee(employeeId).subscribe(
         (response: void) => {
