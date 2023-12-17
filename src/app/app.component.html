@@ -41,18 +41,13 @@
         </ul>
         <div class="card-body">
           <div class="float-right btn-group btn-group-sm">
-            <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
-               data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-            <a href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip"
-               data-original-title="Delete"><i class="fa fa-times"></i></a>
+            <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
           </div>
           <ul class="social-links list-inline mb-0 mt-2">
-            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                            data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                            data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                            data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
           </ul>
         </div>
       </div>
@@ -96,6 +91,50 @@
           <div class="modal-footer">
             <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee {{editEmployee?.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ngModel="{{editEmployee?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+          </div>
+          <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+          <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" ngModel="{{editEmployee?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="phone">Job title</label>
+            <input type="text" ngModel="{{editEmployee?.jobTitle}}" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job title">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" ngModel="{{editEmployee?.phone}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+          </div>
+          <div class="form-group">
+            <label for="phone">Image URL</label>
+            <input type="text" ngModel="{{editEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+            <button (click)="onUpdateEmloyee(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
           </div>
         </form>
       </div>

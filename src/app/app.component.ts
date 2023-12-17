@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
           alert(error.message);
         });
   }
+
   public onOpenModal(employee: any, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
@@ -73,4 +74,31 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  public onUpdateEmloyee(employee: Employee): void {
+    this.employeeService.updateEmployee(employee).subscribe(
+      (response: Employee) => {
+        console.log(response);
+        this.getEmployees();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onDeleteEmloyee(employeeId: number): void {
+    this.employeeService.deleteEmployee(employeeId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getEmployees();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
 }
+
+
