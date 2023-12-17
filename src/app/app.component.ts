@@ -27,14 +27,10 @@ export class AppComponent implements OnInit {
   public getEmployees(): void {
     this.employeeService.getEmployees()
       .subscribe((response: Employee[]) => {
-        console.log(response)
           this.employees = response;
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
         });
   }
-
-
-  protected readonly console = console;
 }

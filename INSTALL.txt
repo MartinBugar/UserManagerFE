@@ -1,0 +1,3 @@
+ng add @ng-bootstrap/ng-bootstrap
+
+snippet : https://bootdey.com/snippets/view/bs4-contact-cards
