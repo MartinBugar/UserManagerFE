@@ -14,7 +14,7 @@ import {FormsModule, NgForm} from "@angular/forms";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'EmployeeManagerf';
+  title = 'UserManagerFE';
 
   constructor(private userService: UserService) {
   }
