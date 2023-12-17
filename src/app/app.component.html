@@ -19,47 +19,39 @@
   </div>
 </nav>
 
-
-<div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor="let user of users" class="col-md-6 col-xl-3">
-      <div class="card m-b-30 card-custom">
-        <div class="card-body row">
-          <div class="col-6">
-            <a href=""><img src="{{user?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
-          </div>
-          <div class="col-6 card-title align-self-center mb-0 ">
-            <h5>{{ user?.name }}</h5>
-            <p class="m-0">{{ user?.jobTitle }}</p>
-          </div>
+<div class="container mt-5" id="main-container">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Job Title</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <th scope="row">{{user.id}}</th>
+      <td>{{ user.name }}</td>
+      <td>{{ user.jobTitle }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>
+        <div class="float-right btn-group btn-group-sm">
+          <a (click)="onOpenModal(user, 'edit')" class="btn btn-primary tooltips" data-placement="top"
+             data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+          <a (click)="onOpenModal(user, 'delete')" class="btn btn-secondary tooltips" data-placement="top"
+             data-original-title="Delete"><i class="fa fa-times"></i></a>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a
-            href="#">{{ user?.email }}</a></li>
-          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{ user?.phone }}</li>
-        </ul>
+      </td>
 
-        <div class="card-body">
-          <div class="float-right btn-group btn-group-sm">
-            <a (click)="onOpenModal(user, 'edit')" class="btn btn-primary tooltips" data-placement="top"
-               data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-            <a (click)="onOpenModal(user, 'delete')" class="btn btn-secondary tooltips" data-placement="top"
-               data-original-title="Delete"><i class="fa fa-times"></i></a>
-          </div>
-          <ul class="social-links list-inline mb-0 mt-2">
-            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                            data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                            data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                            data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
 
 <!-- Add User Modal -->
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel"
